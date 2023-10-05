@@ -34,6 +34,7 @@ fun SplashScreen(navController: NavHostController, viewModel: SplashViewModel) {
         )
 
         delay(2500L)
+        navController.popBackStack()
         viewModel.redirect(navController)
     })
 

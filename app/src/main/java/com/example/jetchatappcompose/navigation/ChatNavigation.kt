@@ -51,15 +51,9 @@ fun ChatNavigation() {
             AddRoomScreen(viewModel = viewModel, navController = navController)
         }
 
-        composable(route = ChatScreens.ChatRoomScreen.name + "/{roomTitle}", arguments = listOf(
-            navArgument("roomTitle"){
-            type = NavType.StringType
-            }
-        )){navBack ->
-          navBack.arguments?.getString("roomTitle").let{ roomTitle ->
-              val viewModel : ChatRoomViewModel = viewModel()
-              ChatRoomScreen(viewModel,navController, roomTitle)
-          }
+        composable(route = ChatScreens.ChatRoomScreen.name){
+            val viewModel : ChatRoomViewModel = viewModel()
+            ChatRoomScreen(viewModel,navController)
         }
 
     }

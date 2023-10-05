@@ -10,9 +10,9 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
 class LoginViewModel : ViewModel() {
-    val emailState = mutableStateOf("crowy@dota.com")
+    val emailState = mutableStateOf("")
     val emailError = mutableStateOf("")
-    val passwordState = mutableStateOf("123456")
+    val passwordState = mutableStateOf("")
     val passwordError = mutableStateOf("")
     val showLoading = mutableStateOf(false)
     val showDialog =  mutableStateOf(false)
@@ -58,18 +58,25 @@ class LoginViewModel : ViewModel() {
     private fun getUser(uid: String?) {
         showLoading.value = true
         getUserFromFireStoreDB(
-            uid!!, onSuccessListener = {
-                val appUser = it.toObject(AppUser::class.java)
-                SessionProvider.user = appUser
-                message.value = "Login Successfully"
-                showDialog.value = true
-                showLoading.value = false
-            }, onFailureListener = {
-                showLoading.value = false
-                message.value = it.localizedMessage ?: ""
-                showDialog.value = true
-            })
+            uid!!) { task ->
+           if(task.isSuccessful){
+               val appUser = task.result.toObject(AppUser::class.java)
+               SessionProvider.user = appUser
+               message.value = "Login Successfully"
+               showDialog.value = true
+               showLoading.value = false
+           }else{
+
+               showLoading.value = false
+               message.value = task.exception?.localizedMessage ?: ""
+               showDialog.value = true
+           }
+        }
     }
 
 
 }
+
+
+
+

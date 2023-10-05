@@ -57,6 +57,7 @@ fun HomeScreen(viewModel: HomeViewModel, navController: NavHostController) {
                 IconButton(onClick = {
                     viewModel.singOutFromFirebase()
                     navController.popBackStack()
+                    navController.navigate(ChatScreens.LoginScreen.name)
                 }) {
                     Icon(tint = Color.White,
                         modifier = Modifier.size(32.dp),
@@ -98,7 +99,11 @@ fun HomeScreen(viewModel: HomeViewModel, navController: NavHostController) {
                 items(viewModel.roomList.value.size) { itemPosition ->
                     val room = viewModel.roomList.value[itemPosition]
                     ChatCard(item = room, position = itemPosition) {
-                     navController.navigate(ChatScreens.ChatRoomScreen.name + "/${room.title}")
+                        navController.currentBackStackEntry?.savedStateHandle?.apply {
+                            set("room", room)
+                        }
+                        navController.navigate(ChatScreens.ChatRoomScreen.name )
+
                     }
 
                 }

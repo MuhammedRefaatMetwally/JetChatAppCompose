@@ -25,7 +25,7 @@ fun ChatAppBar(
     actions: @Composable() (RowScope.() -> Unit) = {},
     navigationIcon : @Composable () -> Unit = {},
 ) {
-    CenterAlignedTopAppBar(
+    CenterAlignedTopAppBar(modifier = Modifier.padding(top = 16.dp),
         title = {
             Text(
                 text = topAppTitle,
