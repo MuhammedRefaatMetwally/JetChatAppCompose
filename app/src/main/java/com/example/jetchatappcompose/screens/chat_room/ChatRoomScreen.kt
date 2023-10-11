@@ -214,7 +214,7 @@ fun SendMessageBox(viewModel: ChatRoomViewModel) {
             OutlinedTextField(
                 value = viewModel.messageFieldState.value,
                 onValueChange = { viewModel.messageFieldState.value = it },
-                label = { Text(text = "Type a message") },
+                label = { Text(text = "Message") },
                 shape = RoundedCornerShape(topEnd = 16.dp),
             )
         }

@@ -55,8 +55,8 @@ class ChatRoomViewModel : ViewModel() {
                }
            }
           val newList = mutableListOf<Message>()
-          newList.addAll(newMessage)
-          newList.addAll(newMessageState.value)
+          newList.addAll(newMessage) // add new messages
+          newList.addAll(newMessageState.value) // add old messages
           newMessageState.value = newList
 
           }
