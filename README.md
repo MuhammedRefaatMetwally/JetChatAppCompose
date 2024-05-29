@@ -1,9 +1,7 @@
 
 # Awesome Chat App 📱💬
 
-![Chat Icon]
-
-Welcome to the Awesome Chat App repository! This chat app is built with Android technology using Kotlin and powered by Jetpack Compose. Below are the key features and their corresponding icons:
+Welcome to the Awesome Chat App repository! This chat app is built with Android technology using Kotlin and powered by Jetpack Compose 📱. Below are the key features and their corresponding icons:
 
 1. **User Authentication** 🔐
    - Real-time messaging with Firebase ensures secure and seamless communication.
